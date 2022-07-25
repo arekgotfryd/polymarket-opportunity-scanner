@@ -1,8 +1,6 @@
 <p-table
   *ngIf="activeMarkets$  | async as markets"
   [value]="markets"
-  [paginator]="true"
-  [rows]="10"
   [loading]="(loading$ | async)!"
 >
   <ng-template pTemplate="header">
