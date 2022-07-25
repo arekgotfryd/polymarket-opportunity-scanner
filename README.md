@@ -14,6 +14,13 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
+## Deployment
+
+1. Run `git merge master` when on `gh-pages` branch
+2. Run `ng build --output-path docs --base-href /polymarket-opportunity-scanner/` IN POWER SHELL!!!
+3. git add and push changes 
+4. Observe if it has been deployed in github actions for the repository
+
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
