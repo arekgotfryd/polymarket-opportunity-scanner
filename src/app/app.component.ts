@@ -23,8 +23,8 @@ export class AppComponent {
             return markets.map((market) => {
               return {
                 ...market,
-                outcomePriceYes: market.outcomePrices[0],
-                outcomePriceNo: market.outcomePrices[1],
+                outcomePriceYes: +market.outcomePrices[0],
+                outcomePriceNo: +market.outcomePrices[1],
                 endDate: new Date(market.end_date_iso),
                 startDate: new Date(market.start_date_iso),
               };
@@ -39,7 +39,7 @@ export class AppComponent {
     //shows spinner only before first response
     this.loading$ = of(true).pipe(
       takeUntil(this.activeMarkets$),
-      map(() => false),
+      map(() => false)
       // tap(console.log)
     );
   }

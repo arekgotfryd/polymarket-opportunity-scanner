@@ -1,5 +1,5 @@
 <p-table
-  *ngIf="activeMarkets$  | async as markets"
+  *ngIf="activeMarkets$ | async as markets"
   [value]="markets"
   [loading]="(loading$ | async)!"
 >
@@ -44,8 +44,10 @@
       <th [pSortableColumn]="'outcomePriceYes'">
         Yes Outcome Price
         <p-columnFilter
-          type="number"
-          field="question"
+          type="numeric"
+          [minFractionDigits]="2"
+          [maxFractionDigits]="2"
+          field="outcomePriceYes"
           display="menu"
           class="p-ml-auto"
         ></p-columnFilter>
@@ -53,8 +55,10 @@
       <th [pSortableColumn]="'outcomePriceNo'">
         No Outcome Price
         <p-columnFilter
-          type="number"
-          field="question"
+          type="numeric"
+          [minFractionDigits]="2"
+          [maxFractionDigits]="2"
+          field="outcomePriceNo"
           display="menu"
           class="p-ml-auto"
         ></p-columnFilter>
@@ -62,8 +66,8 @@
       <th [pSortableColumn]="'volume_num'">
         Volume
         <p-columnFilter
-          type="number"
-          field="question"
+          type="numeric"
+          field="volume_num"
           display="menu"
           class="p-ml-auto"
         ></p-columnFilter>
@@ -71,8 +75,8 @@
       <th [pSortableColumn]="'liquidity_num'">
         Liquidity
         <p-columnFilter
-          type="number"
-          field="question"
+          type="numeric"
+          field="liquidity_num"
           display="menu"
           class="p-ml-auto"
         ></p-columnFilter>
@@ -84,8 +88,8 @@
     <tr>
       <td>{{ market.id }}</td>
       <td>{{ market.question }}</td>
-      <td>{{ market.startDate | date:'longDate' }}</td>
-      <td>{{ market.endDate | date:'longDate' }}</td>
+      <td>{{ market.startDate | date: "longDate" }}</td>
+      <td>{{ market.endDate | date: "longDate" }}</td>
       <td>{{ market.outcomePriceYes | number: "1.2-2" }}</td>
       <td>{{ market.outcomePriceNo | number: "1.2-2" }}</td>
       <td>{{ market.volume_num }}</td>
@@ -96,4 +100,3 @@
     </tr>
   </ng-template>
 </p-table>
-
