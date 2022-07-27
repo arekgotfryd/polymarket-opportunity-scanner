@@ -80,8 +80,8 @@ export interface Market {
     review_status: any;
     use_cases: any[];
     seo: any;
-    outcomePriceYes?: string;
-    outcomePriceNo?: string;
+    outcomePriceYes?: number;
+    outcomePriceNo?: number;
     endDate?: Date;
     startDate?: Date;
   }
