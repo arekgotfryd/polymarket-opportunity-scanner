@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Observable, of, timer } from 'rxjs';
-import { map, retry, share, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { Observable, timer } from 'rxjs';
+import { map, retry, switchMap } from 'rxjs/operators';
 import { Market } from './models/Market';
 import { PolyStrapiService } from './poly-strapi.service';
 
@@ -11,7 +11,6 @@ import { PolyStrapiService } from './poly-strapi.service';
 })
 export class AppComponent {
   title = 'polymarket-opportunity-scanner';
-  loading$: Observable<boolean> | undefined;
   activeMarkets$: Observable<Market[]> | undefined;
   constructor(private readonly polyStrapiService: PolyStrapiService) {}
 
@@ -32,15 +31,7 @@ export class AppComponent {
           })
         );
       }),
-      retry(),
-      share(),
-      // tap(console.log)
-    );
-    //shows spinner only before first response
-    this.loading$ = of(true).pipe(
-      takeUntil(this.activeMarkets$),
-      map(() => false)
-      // tap(console.log)
+      retry()
     );
   }
 }
