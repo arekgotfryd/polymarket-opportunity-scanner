@@ -1,7 +1,6 @@
 <p-table
-  *ngIf="activeMarkets$ | async as markets"
+  *ngIf="activeMarkets$ | async as markets; else loading"
   [value]="markets"
-  [loading]="(loading$ | async)!"
 >
   <ng-template pTemplate="header">
     <tr>
@@ -100,3 +99,6 @@
     </tr>
   </ng-template>
 </p-table>
+<ng-template #loading
+  ><div class="spinner-container"><i class="pi pi-spin pi-spinner vertical-center" style="font-size: 2rem"></i></div
+></ng-template>
